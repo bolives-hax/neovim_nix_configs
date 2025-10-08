@@ -1,0 +1,1 @@
+# neovim_nix_config
