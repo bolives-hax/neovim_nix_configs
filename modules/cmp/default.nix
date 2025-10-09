@@ -8,9 +8,9 @@
     settings = {
       completion = {
         # V kthe default value
-        #autocomplete = [
-        #  "require('cmp.types').cmp.TriggerEvent.TextChanged"
-        #];
+        autocomplete = [
+          "require('cmp.types').cmp.TriggerEvent.TextChanged"
+        ];
         keyword_length = 0;
       };
       mapping = {
@@ -45,7 +45,7 @@
         "<Tab>" = ''
           cmp.mapping(function(fallback)
             if cmp.visible() then
-              cmp.select_next_item()
+              cmp.select_next_item({behavior = cmp.SelectBehavior.Select})
             else
               fallback()
             end

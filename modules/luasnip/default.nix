@@ -43,5 +43,6 @@
   };
   plugins.cmp.settings.sources = lib.optional config.plugins.cmp.enable {
     name = "luasnip";
+    show_autosnippets = true;
   };
 }

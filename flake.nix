@@ -5,7 +5,11 @@
       url = "github:nix-community/nixvim";
     };
     extraLatexSnippets = {
-      url = "github:bolives-hax/latex-luasnips";
+      # main is the original branch BUT since i discovered
+      # cmp.select_next_item({behavior = cmp.SelectBehavior.Select}) instead of insert
+      # its no longer needed to maintain a modified snippet collection since they wont
+      # accidentially get auto applied anymore 
+      url = "github:bolives-hax/latex-luasnips/main";
       flake = false;
     };
   };

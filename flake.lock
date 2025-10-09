@@ -12,6 +12,7 @@
       },
       "original": {
         "owner": "bolives-hax",
+        "ref": "main",
         "repo": "latex-luasnips",
         "type": "github"
       }
