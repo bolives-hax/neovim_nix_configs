@@ -157,16 +157,16 @@
               Operator = "",
               TypeParameter = "",
             }
-              
+
             vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
             vim_item.menu = ({
-            	path = "[Path]",
-            	nvim_lua = "[NVIM_LUA]",
-            	nvim_lsp = "[LSP]",
-            	luasnip = "[Snippet]",
-            	vimtex = "[vimtex]",
-            	buffer = "[Buffer]",
-                  speling = "[SPELL]";
+              path = "[Path]",
+              nvim_lua = "[NVIM_LUA]",
+              nvim_lsp = "[LSP]",
+              luasnip = "[Snippet]",
+              vimtex = "[vimtex]",
+              buffer = "[Buffer]",
+              speling = "[SPELL]";
             })[entry.source.name]
             return vim_item
           end
