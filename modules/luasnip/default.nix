@@ -1,7 +1,9 @@
 {
   config,
+  pkgs,
   lib,
   extraLatexSnippets,
+  telescopeLuasnip,
   ...
 }:
 {
@@ -45,4 +47,13 @@
     name = "luasnip";
     show_autosnippets = true;
   };
+  plugins.telescope = {
+    enabledExtensions = [ "luasnip" ];
+  };
+  extraPlugins = [
+    (pkgs.vimUtils.buildVimPlugin {
+      name = "telescopeLuasnip";
+      src = telescopeLuasnip;
+    })
+  ];
 }

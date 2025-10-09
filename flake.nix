@@ -8,8 +8,13 @@
       # main is the original branch BUT since i discovered
       # cmp.select_next_item({behavior = cmp.SelectBehavior.Select}) instead of insert
       # its no longer needed to maintain a modified snippet collection since they wont
-      # accidentially get auto applied anymore 
+      # accidentially get auto applied anymore
       url = "github:bolives-hax/latex-luasnips/main";
+      flake = false;
+    };
+
+    telescopeLuasnip = {
+      url = "github:benfowler/telescope-luasnip.nvim";
       flake = false;
     };
   };
@@ -20,6 +25,7 @@
       nixpkgs,
       nixvim,
       extraLatexSnippets,
+      telescopeLuasnip,
     }:
     let
       systems = nixpkgs.lib.systems.flakeExposed;
@@ -32,6 +38,7 @@
           ./modules/cmp/default.nix
           ./modules/luasnip/default.nix
           ./modules/latex/default.nix
+          ./modules/telescope/default.nix
           # TODO move this somewhere its just to not burn my eyes out for now
           { colorscheme = "torte"; }
           {
@@ -50,7 +57,7 @@
       };
       packages = forAllSystems (system: {
         default = nixvim.legacyPackages.${system}.makeNixvimWithModule {
-          extraSpecialArgs = { inherit extraLatexSnippets; };
+          extraSpecialArgs = { inherit extraLatexSnippets telescopeLuasnip; };
           module = self.nixvimModules.default;
         };
       });
