@@ -30,6 +30,18 @@
           ./modules/latex/default.nix
           # TODO move this somewhere its just to not burn my eyes out for now
           { colorscheme = "torte"; }
+          {
+            opts = {
+              # display horizontal and vertical bar trough the cursor
+              # to aid visually locating the cursor at all times
+              cursorline = true;
+              cursorcolumn = true;
+
+              # display current line number + relative number ordering to cursor
+              number = true;
+              relativenumber = true;
+            };
+          }
         ];
       };
       packages = forAllSystems (system: {
