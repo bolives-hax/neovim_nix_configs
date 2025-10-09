@@ -50,7 +50,7 @@
   plugins.telescope = {
     enabledExtensions = [ "luasnip" ];
   };
-  extraPlugins = [
+  extraPlugins = lib.optionals config.plugins.cmp.enable [
     (pkgs.vimUtils.buildVimPlugin {
       name = "telescopeLuasnip";
       src = telescopeLuasnip;

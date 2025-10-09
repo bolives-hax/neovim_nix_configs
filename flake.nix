@@ -39,6 +39,7 @@
           ./modules/luasnip/default.nix
           ./modules/latex/default.nix
           ./modules/telescope/default.nix
+          ./modules/autosave/default.nix
           # TODO move this somewhere its just to not burn my eyes out for now
           { colorscheme = "torte"; }
           {
