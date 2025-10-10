@@ -5,15 +5,34 @@
     cmp-vimtex = {
       enable = true;
     };
+    cmp-latex-symbols = {
+      enable = true;
+    };
     # vimtex (provides lotsa helpers to work with LaTeX)
     vimtex = {
       enable = true;
       settings = {
         view_method = "zathura";
+        vimtex_compiler_latexmk = {
+          build_dir = "";
+          options = [
+            "-pdf"
+            "$max_repeat=50"
+            "-interaction=nonstopmode"
+            "-synctex=1"
+            "-pvc"
+          ];
+        };
       };
     };
   };
-  plugins.cmp.settings.sources = lib.optional config.plugins.cmp.enable {
-    name = "vimtex";
-  };
+  plugins.cmp.settings.sources = lib.optionals config.plugins.cmp.enable [
+    { name = "vimtex"; }
+    {
+      name = "latex_symbols";
+      option = {
+        strategy = 2;
+      };
+    }
+  ];
 }

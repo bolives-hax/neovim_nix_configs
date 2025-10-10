@@ -16,5 +16,7 @@
 
   imports = [
     ./nixd.nix
+    # TODO do I actually need ltex if i got ltex
+    #./ltex.nix
   ];
 }

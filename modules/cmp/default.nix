@@ -14,9 +14,26 @@
         keyword_length = 0;
       };
       mapping = {
-        # V "enter/return -> cmp select
+        # V "enter/return -> cmp select , note that expanding a snippet
+        # doesn't mean "accepting" one of the muliple "choices" that a
+        # luansip-snippet may present given:
+        # =======> require("luasnip").choice_active() = true
+        #
+        # but rather you will want to use require("luasnip").jump(1) to place
+        # the cursor behind the selected choice and leave SELECT mode. If you
+        # were to use <CR> => require("luasnip").expand() instead it would
+        # simply delete the SELECT'ed  choice ..... <CR> is only for accepting
+        # the core snippet presented by cmp NOT for "accepting" a
+        # luasnip-snippet-choices-"coice"
+        # Lets say you got "itbn" which may either be \iint or \oiint
+        # depending on what you select via require("luasnip").change_choice(+-1)
+        # you will see "\iint" or "\oiint" selected and SELECT as the mode in the corner
+        # to then continue instead of discarding it press what maps to luasnips .jump()
         "<CR>" =
           let
+            # TODO what does select=true|false even do? I believe i misunderstood
+            # it and what somebody suggested was rather the way i used it on
+            # cmp_select_next( { behavior = cmp.SelectBehaviorSelect } )
             lsHook =
               action:
               if config.plugins.cmp_luasnip.enable then
@@ -32,10 +49,13 @@
                   ${action}
                 '';
           in
+          # -- According to doc: Accept currently selected item.
+          # Set `select` to `false` to only confirm explicitly selected items.
+          # TODO but this doens't seem to change any behavior?! why is that
           ''
             cmp.mapping(function(fallback)
               if cmp.visible() then
-                ${lsHook "cmp.confirm({ select = true, })"}
+                ${lsHook "cmp.confirm({ select = true })"}
               else
                   fallback()
               end
