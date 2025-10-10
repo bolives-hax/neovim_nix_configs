@@ -49,6 +49,7 @@
           ./modules/orgmode/default.nix
           # TODO move this somewhere its just to not burn my eyes out for now
           { colorscheme = "torte"; }
+          { performance.byteCompileLua.enable = true; }
           {
             keymaps = [
               # TODO can we put leader here?!
