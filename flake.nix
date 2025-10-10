@@ -17,6 +17,10 @@
       url = "github:benfowler/telescope-luasnip.nvim";
       flake = false;
     };
+    telescopeOrgmode = {
+      url = "github:nvim-orgmode/telescope-orgmode.nvim";
+      flake = false;
+    };
   };
 
   outputs =
@@ -26,6 +30,7 @@
       nixvim,
       extraLatexSnippets,
       telescopeLuasnip,
+      telescopeOrgmode,
     }:
     let
       systems = nixpkgs.lib.systems.flakeExposed;
@@ -41,9 +46,20 @@
           ./modules/telescope/default.nix
           ./modules/autosave/default.nix
           ./modules/nix/default.nix
+          ./modules/orgmode/default.nix
           # TODO move this somewhere its just to not burn my eyes out for now
           { colorscheme = "torte"; }
           {
+            keymaps = [
+              # TODO can we put leader here?!
+            ];
+          }
+          {
+            globals = {
+              # funnily enough setting this to <Space> wont work while setting it
+              # to " " as in actual space ascii char will ...
+              mapleader = " ";
+            };
             opts = {
               # display horizontal and vertical bar trough the cursor
               # to aid visually locating the cursor at all times
@@ -59,7 +75,7 @@
       };
       packages = forAllSystems (system: {
         default = nixvim.legacyPackages.${system}.makeNixvimWithModule {
-          extraSpecialArgs = { inherit extraLatexSnippets telescopeLuasnip; };
+          extraSpecialArgs = { inherit extraLatexSnippets telescopeLuasnip telescopeOrgmode;};
           module = self.nixvimModules.default;
         };
       });

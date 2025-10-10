@@ -165,7 +165,8 @@
         "extraLatexSnippets": "extraLatexSnippets",
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
-        "telescopeLuasnip": "telescopeLuasnip"
+        "telescopeLuasnip": "telescopeLuasnip",
+        "telescopeOrgmode": "telescopeOrgmode"
       }
     },
     "systems": {
@@ -211,6 +212,22 @@
       "original": {
         "owner": "benfowler",
         "repo": "telescope-luasnip.nvim",
+        "type": "github"
+      }
+    },
+    "telescopeOrgmode": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1754745901,
+        "narHash": "sha256-2XsKl6iJYmrWDJEtj1tXBVuAHMO4RGr6C2gIguJTCKk=",
+        "owner": "nvim-orgmode",
+        "repo": "telescope-orgmode.nvim",
+        "rev": "c5203783e954faefd8fa685b69f8218434a2bb16",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nvim-orgmode",
+        "repo": "telescope-orgmode.nvim",
         "type": "github"
       }
     }

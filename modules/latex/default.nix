@@ -17,6 +17,8 @@
           build_dir = "";
           options = [
             "-pdf"
+            # V this seems to help VimTex creating a popup that makes
+            #   luasnip stop
             "$max_repeat=50"
             "-interaction=nonstopmode"
             "-synctex=1"
