@@ -47,9 +47,11 @@
           ./modules/autosave/default.nix
           ./modules/nix/default.nix
           ./modules/orgmode/default.nix
+          ./modules/whichkey/default.nix
           # TODO move this somewhere its just to not burn my eyes out for now
           { colorscheme = "torte"; }
           { performance.byteCompileLua.enable = true; }
+          { plugins.hardtime.enable = true; }
           {
             keymaps = [
               # TODO can we put leader here?!
