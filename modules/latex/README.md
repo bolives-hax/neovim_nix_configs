@@ -58,10 +58,11 @@ l.70 #
 <inserted text>
                 $
 l.72 \end{document}
-```
 
 
 [2] (aux/main.aux) )
+```
+
 while there doesn't seem to be anything out of the ordinary in regards to this error message __sure its an error but Vimtex is supposed to properly present these to us (not literally "stop working" because of it)__.
 
 There quite literally is "an error dealing with our error" quite ironically. The problem becomes obvious when you add `-file-line-error` to `pdflatex`'s commandline arguments.
