@@ -8,7 +8,7 @@ There are times where it breaks in cryptic ways however if used trough Vimtex wi
 
 Here is an example of the problematic behavior encountered:
 
-(vimtex_file_line_error_example.png)
+![](vimtex_file_line_error_example.png)
 
 > __I chose to include a picture here to better ilustrate the issue and to avoid confusion with the `:VimtexError`=`Quickfix List`-window you typically see at the bottom. Below you see the "end" of said windows content once again in plaintext (mostly so its machine readable)`__ 
 
@@ -39,7 +39,7 @@ If you see this box for the first time you may believe that either:
 
 As for 1): the way Vimtex presents Errors/Warning to you is supposed to look more like this:
 
-(vimtex_quickfix_list_example.png)
+![](vimtex_quickfix_list_example.png)
 
 Which merely informs me that in the following location there is something worth emitting a warning over:
 ```
