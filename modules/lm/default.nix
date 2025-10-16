@@ -42,7 +42,12 @@
         openai = {
           endpoint = "https://nano-gpt.com/api/v1/chat/completions",
           -- TODO use pass or keepassxc for retriving this
-          secret = os.getenv("OPENAI_API_KEY"),
+          --secret =  os.getenv("OPENAI_API_KEY"),
+          secret = {
+            "pass",
+            "show",
+            "nanogpt_openai_api_key"
+          },
         },
       },
       agents =  {
