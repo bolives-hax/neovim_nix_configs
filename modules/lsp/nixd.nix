@@ -13,8 +13,9 @@ with lib.nixvim;
       formatting = {
         command = [ "nixfmt-rfc-style" ];
       };
+      # TODO WHY IS THIS NOT WORKING in any variation
       options = {
-        nixvim.expr = ''import (builtins.getFlake(toString ./.)).inputs.nixvim.nixvimConfigurations.x86_64-linux.default.options'';
+        nixvim.expr = ''(builtins.getFlake(toString /home/flandre/nixvim)).inputs.nixvim.nixvimConfigurations.x86_64-linux.default.options'';
       };
     };
     filetypes = [ "nix" ];
