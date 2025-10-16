@@ -21,6 +21,10 @@
       url = "github:nvim-orgmode/telescope-orgmode.nvim";
       flake = false;
     };
+    gpNvim = {
+      url = "github:Robitx/gp.nvim";
+      flake = false;
+    };
   };
 
   outputs =
@@ -31,6 +35,7 @@
       extraLatexSnippets,
       telescopeLuasnip,
       telescopeOrgmode,
+      gpNvim,
     }:
     let
       systems = nixpkgs.lib.systems.flakeExposed;
@@ -48,10 +53,11 @@
           ./modules/nix/default.nix
           ./modules/orgmode/default.nix
           ./modules/whichkey/default.nix
+          ./modules/lm/default.nix
           # TODO move this somewhere its just to not burn my eyes out for now
           { colorscheme = "torte"; }
           { performance.byteCompileLua.enable = true; }
-          { plugins.hardtime.enable = true; }
+          #{ plugins.hardtime.enable = true; }
           {
             keymaps = [
               # TODO can we put leader here?!
@@ -78,7 +84,7 @@
       };
       packages = forAllSystems (system: {
         default = nixvim.legacyPackages.${system}.makeNixvimWithModule {
-          extraSpecialArgs = { inherit extraLatexSnippets telescopeLuasnip telescopeOrgmode;};
+          extraSpecialArgs = { inherit extraLatexSnippets telescopeLuasnip telescopeOrgmode gpNvim;};
           module = self.nixvimModules.default;
         };
       });

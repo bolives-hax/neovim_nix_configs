@@ -56,6 +56,22 @@
         "type": "github"
       }
     },
+    "gpNvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1754903071,
+        "narHash": "sha256-+K536d3WF5eHRTSgkhn1NLFHms67iw4A0Ql8OZ9TgTw=",
+        "owner": "Robitx",
+        "repo": "gp.nvim",
+        "rev": "c37f154b97690c4925fef4e35ffdbf2c844b5f4e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Robitx",
+        "repo": "gp.nvim",
+        "type": "github"
+      }
+    },
     "ixx": {
       "inputs": {
         "flake-utils": [
@@ -163,6 +179,7 @@
     "root": {
       "inputs": {
         "extraLatexSnippets": "extraLatexSnippets",
+        "gpNvim": "gpNvim",
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
         "telescopeLuasnip": "telescopeLuasnip",
