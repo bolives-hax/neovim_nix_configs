@@ -22,3 +22,7 @@ running
 ```
 prints out the cfg/init nvim will run (without all the "nix stuff") as in the
 final output the nix expressions/derivation will produce
+
+## TODO
+
+include various nested README.md's here as their existence is almost pointless if the user forgets to look at them
