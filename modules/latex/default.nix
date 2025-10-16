@@ -27,21 +27,25 @@
           "Package hyperref Warning: Token not allowed in a PDF string"
         ];
         view_method = "zathura";
+        # see ./README.md for a detailed explaination of caveats
         compiler_latexmk = {
+          # callback = 1; # disables the error-callback described in ./README.md
+          # but also eliminates error reporting entirely ... which is more than suboptimal
+          emulate_aux = 1;
           # V place various files creates during the build (such as a .log file)
           #   into a dedicated aux directory, this reduces artifact-clutter
           aux_dir = "aux";
           build_dir = "";
           options = [
             "-pdf"
-            # V this seems to help VimTex creating a popup that makes
-            #   luasnip stop (TODO doesn't reliably work it seems to
-            # have reduced the occurances of this error by 70% but that may just
-            # be my imagination.... I'm not even 1000% sure if this setting is being
-            # respect at all, guess I'll have to find out)
-            # TODO after figuring out the actual issue set this to a sane value that prevents
-            # us from ever seeing this popup that break Vixtex/Luasnip
-            "-e '$max_repeat=500'"
+            # VERY IMPORTANT!!!
+            # V this ensures that pdflatex when called will -file-line-error
+            # V which according to  its man page "Print error messages in the form
+            #   file:line:error which is similar to the way many compilers format them"
+            #
+            # V   this is needed because otherwise certain errors
+            "-file-line-error" # very important!
+            # "-e '$max_repeat=500'"
             "-interaction=nonstopmode"
             # TODO what do these do again (they were taken from old cfg)
             "-synctex=1"
