@@ -48,6 +48,8 @@
         { __unkeyed = "die"; desc = "VimTex: (D)elete (whats) (I)nside LaTeX (E)nvironment"; }
         { __unkeyed = "vie"; desc = "VimTex: (V)isually select (I)nside (E)nvironment"; }
 
+        # TODO add all the Vimtex commands, for example aP and ac typa commands aren't included yet
+
         {
           __unkeyed-1 = "<leader>b";
           group = "buffers";
