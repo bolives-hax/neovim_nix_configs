@@ -66,14 +66,14 @@ To open a telescope popup with all the Diagnostics you can search trough
 space -> t -> d
 ```
 
-![](dia_triggered_telescope.gif)
+![](media/dia_triggered_telescope.gif)
 
 To display diagnostics about whats currently on/under the cursor
 ```
 space -> d -> o
 ```
 
-![](dia_triggered_manually.gif)
+![](media/dia_triggered_manually.gif)
 
 Everything else will be revealed by which-key by just typing `space -> t`
 
