@@ -56,6 +56,9 @@ Rust and C LSP's are planned [TODO] once I get to program again __(currently I'm
 
 If your cursor idles and you are curently not in insert mode, after a while diagnostics
 will be shown regarding whats beneath your cursor (given there is anything to report ofc [warning/error/...]).
+
+![](media/dia_idle.gif)
+
 These diagnostics however are present in a reduced form, to view the full set of diagnostics use the commands below
 
 To open a telescope popup with all the Diagnostics you can search trough
@@ -63,10 +66,14 @@ To open a telescope popup with all the Diagnostics you can search trough
 space -> t -> d
 ```
 
+![](dia_triggered_telescope.gif)
+
 To display diagnostics about whats currently on/under the cursor
 ```
 space -> d -> o
 ```
+
+![](dia_triggered_manually.gif)
 
 Everything else will be revealed by which-key by just typing `space -> t`
 
@@ -80,4 +87,5 @@ final output the nix expressions/derivation will produce
 
 ## TODO
 
-include various nested README.md's here as their existence is almost pointless if the user forgets to look at them
+- include various nested README.md's here as their existence is almost pointless if the user forgets to look at them
+- Render the term WITH keystrokes being shown
