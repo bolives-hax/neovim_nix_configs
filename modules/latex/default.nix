@@ -45,7 +45,12 @@
             #
             # V   this is needed because otherwise certain errors
             "-file-line-error" # very important!
-            # "-e '$max_repeat=500'"
+            # V sometimes the LaTeX compiler needs more than 2 runs which
+            #   happens to be the default. It will fail if it does which Vimtex doens't
+            #   understand and this manifests with the same sorta popup as
+            #   for -file-line-error where it can't parse the logfile properly
+            "-e '$max_repeat=500'" # what may be a sane value? Dunno lets just go overkill
+            #                         it dosen't seem to do any "harm" as it seems?!
             "-interaction=nonstopmode"
             # TODO what do these do again (they were taken from old cfg)
             "-synctex=1"
