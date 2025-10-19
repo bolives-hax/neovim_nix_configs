@@ -54,8 +54,22 @@
           # TODO but this doens't seem to change any behavior?! why is that
           ''
             cmp.mapping(function(fallback)
-              if cmp.visible() then
-                ${lsHook "cmp.confirm({ select = true })"}
+              -- the "and" before "cmp.get_active_entry()" is very
+              -- important! as it prevents completion entries specifically
+              -- snippets to be applied by pressing <CR>=enter/return as
+              -- I want to retain the ability to use <CR> to insert newlines
+              -- without having to put a space at the end of the line and then
+              -- press <CR> as opposed to being able to press cr in any situation
+              -- as long as I didn't use <TAB> to INTENTIONALLY an cmp(completion)
+              -- entry from the list.
+              if cmp.visible() and cmp.get_active_entry() then
+                ${lsHook "cmp.confirm(
+                {
+                  select = false,
+                  -- TODO I forgot why I put replace here ... find out
+                  -- what my intention behind this was again
+                  behavior = cmp.ConfirmBehavior.Replace
+                })"}
               else
                   fallback()
               end
