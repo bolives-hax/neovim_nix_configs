@@ -47,6 +47,29 @@ to find files (by their **content** NOT their filename) __(in ~/ as defined by $
 space -> t -> f -> G
 ```
 
+### Lsp
+
+Atm only the bash language server is setup and nixd(which however isn't working for extra options such as nixvim's options ...).
+Rust and C LSP's are planned [TODO] once I get to program again __(currently I'm rather busy with calculus =\> Latex and don't find the time to Programm tbh)__
+
+#### dianostics
+
+If your cursor idles and you are curently not in insert mode, after a while diagnostics
+will be shown regarding whats beneath your cursor (given there is anything to report ofc [warning/error/...]).
+These diagnostics however are present in a reduced form, to view the full set of diagnostics use the commands below
+
+To open a telescope popup with all the Diagnostics you can search trough
+```
+space -> t -> d
+```
+
+To display diagnostics about whats currently on/under the cursor
+```
+space -> d -> o
+```
+
+Everything else will be revealed by which-key by just typing `space -> t`
+
 ##  good to know:
 running
 ```sh
