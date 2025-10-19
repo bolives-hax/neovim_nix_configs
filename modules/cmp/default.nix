@@ -79,6 +79,11 @@
         "<Tab>" = ''
           cmp.mapping(function(fallback)
             if cmp.visible() then
+              -- this prevents snippets from being applied unintentionally merelyby cycling
+              -- trough them lie it would be the case in the absence of "behavior = ...Select"
+              -- though if your cmp.confirm() is prefixed with an "cmp.visible() and cmp.get_active_entry()"
+              -- check "cmp.get_active_entry()" technically seen should prevent this from occuring as well
+              -- but I'm including it regardless in case I want to change the behavior one day so I avoid confusion
               cmp.select_next_item({behavior = cmp.SelectBehavior.Select})
             else
               fallback()
@@ -90,7 +95,12 @@
         "<S-Tab>" = ''
           cmp.mapping(function(fallback)
             if cmp.visible() then
-              cmp.select_prev_item()
+              -- this prevents snippets from being applied unintentionally merelyby cycling
+              -- trough them lie it would be the case in the absence of "behavior = ...Select"
+              -- though if your cmp.confirm() is prefixed with an "cmp.visible() and cmp.get_active_entry()"
+              -- check "cmp.get_active_entry()" technically seen should prevent this from occuring as well
+              -- but I'm including it regardless in case I want to change the behavior one day so I avoid confusion
+              cmp.select_prev_item({behavior = cmp.SelectBehavior.Select})
             else
               fallback()
             end
