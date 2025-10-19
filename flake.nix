@@ -56,7 +56,15 @@
           ./modules/lm/default.nix
           # TODO move this somewhere its just to not burn my eyes out for now
           { colorscheme = "torte"; }
+          # V in case something breaks this makes it harder to refer to the source as
+          # V it will be present in a compiled format ... TODO maybe find a way to
+          # V "add debug symbols" or something? Or add a separate input that by default
+          # V disables this BUT using --override-input-attrs can be enabled ... I don't
+          # V know the correct way as for now
           { performance.byteCompileLua.enable = true; }
+          # V seems to break some things and honestly it doesn't help too much teaching
+          #   you more than the very basics. I mostly struggle with using the most efficient
+          #   motions
           #{ plugins.hardtime.enable = true; }
           {
             keymaps = [
