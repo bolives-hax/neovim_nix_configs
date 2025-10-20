@@ -56,4 +56,19 @@
       src = telescopeLuasnip;
     })
   ];
+
+  # TODO make this all dependent on if telescope is even present
+  keymaps = [
+    {
+      key = "<leader>tls";
+      action = lib.nixvim.mkRaw "require('telescope').extensions.luasnip.luasnip";
+    }
+  ];
+  plugins.which-key = {
+    settings = {
+      spec = [
+        { __unkeyed = "<leader>tls"; desc = "luasnip"; }
+      ];
+    };
+  };
 }
