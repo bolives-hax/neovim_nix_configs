@@ -39,6 +39,16 @@
   extraConfigLua = ''
     require("gp").setup({
       providers = {
+        --anthropic = {
+        --  endpoint = "https://nano-gpt.com/api/v1/chat/completions",
+        --  -- TODO use pass or keepassxc for retriving this
+        --  --secret =  os.getenv("OPENAI_API_KEY"),
+        --  secret = {
+        --    "pass",
+        --    "show",
+        --    "nanogpt_openai_api_key"
+        --  },
+        --},
         openai = {
           endpoint = "https://nano-gpt.com/api/v1/chat/completions",
           -- TODO use pass or keepassxc for retriving this
@@ -72,7 +82,7 @@
           chat = true,
           command = false,
           model = { model = "gpt-5-pro" },
-          system_prompt = "start each line with ~>",
+          system_prompt = "Do not simulate emotions or politeness keep the responses free from chit-chat. Assume that the responses are viewed in a terminal thus try to use ascii or commonly installed unicode characters so that it is easy to copy text using visual mode for instance. For math expressions use LaTeX. Try to use mathmatical nomenclature/naming schemes for techniques or formulas and so on (either german or english depending on in what language the user used).",
         },
         {
           name = "Gpt5ChatLatest(NanoGPT)",
@@ -80,7 +90,16 @@
           chat = true,
           command = false,
           model = { model = "gpt-5-chat-latest" },
-          system_prompt = "start each line with ~>",
+          system_prompt = "Do not simulate emotions or politeness keep the responses free from chit-chat. Assume that the responses are viewed in a terminal thus try to use ascii or commonly installed unicode characters so that it is easy to copy text using visual mode for instance. For math expressions use LaTeX. Try to use mathmatical nomenclature/naming schemes for techniques or formulas and so on (either german or english depending on in what language the user used).",
+        },
+        {
+          name = "Sonnet(4_5_thinking)",
+          provider = "openai",
+          chat = true,
+          command = true,
+          model = { model = "claude-sonnet-4-5-20250929-thinking", },
+          system_prompt = "Do not simulate emotions or politeness keep the responses free from chit-chat. Assume that the responses are viewed in a terminal thus try to use ascii or commonly installed unicode characters so that it is easy to copy text using visual mode for instance. For math expressions use LaTeX. Try to use mathmatical nomenclature/naming schemes for techniques or formulas and so on (either german or english depending on in what language the user used).",
+          disable = false,
         },
       },
     })
@@ -103,9 +122,14 @@
     vim.keymap.set({"n", "i"}, "<C-g>t", "<cmd>GpChatToggle<cr>", keymapOptions("Toggle Chat"))
     vim.keymap.set({"n", "i"}, "<C-g>f", "<cmd>GpChatFinder<cr>", keymapOptions("Chat Finder"))
 
+    vim.keymap.set({"n", "i"}, "<C-g>a", "<cmd>GpAppend<cr>", keymapOptions("promt user then append after cursor"))
+
     -- Chat commands (using VISUAL mode's selection)
     vim.keymap.set("v", "<C-g>c", ":<C-u>'<,'>GpChatNew<cr>", keymapOptions("Visual Chat New"))
     vim.keymap.set("v", "<C-g>p", ":<C-u>'<,'>GpChatPaste<cr>", keymapOptions("Visual Chat Paste"))
     vim.keymap.set("v", "<C-g>t", ":<C-u>'<,'>GpChatToggle<cr>", keymapOptions("Visual Toggle Chat"))
+
+    vim.keymap.set("v", "<C-g>r", ":<C-u>'<,'>GpRewrite<cr>", keymapOptions("Visual rewrite selection"))
+    vim.keymap.set("v", "<C-g>a", ":<C-u>'<,'>GpAppend<cr>", keymapOptions("Visual append after selection"))
   '';
 }
