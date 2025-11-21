@@ -85,6 +85,52 @@ running
 prints out the cfg/init nvim will run (without all the "nix stuff") as in the
 final output the nix expressions/derivation will produce
 
+## oil (file creation/editing/moving/copying)
+
+Typing `:e PATH` like `:e .` or simply `:Oil` to edit the the current working directory or lets say `:e ~/` to go to
+the home directory will open oil instead of the default vim file editor
+
+reminder `<C-SOMEKEY>`  meants pressing the Control key along with this key ...
+
+toggele a window split which displays a preview of the file thats currently beneath the cursor:
+```
+control + p
+```
+
+to open the manual / display the keybinds
+```
+g -> ?
+```
+
+```
+gx      Open the entry under the cursor in an external program <pretty much just  calls xdg-open or sometihng >
+<C-h>   Open the entry under the cursor { horizontal = true }
+<C-t>   Open the entry under the cursor { tab = true }
+<C-s>   Open the entry under the cursor { vertical = true }
+<C-l>   Refresh current directory list
+```
+
+`cd ../` functionality can be achieved with
+```
+<->  (just the dash/minus sign) => cd .. 
+```
+
+The oil directory isn't the same as what vim/nvim uses which you can set using
+`:cd` or `:cd PATH` and display it using `:pwd`. This is important as for example
+Telescope respects this path 
+```
+ < ` >       :cd to the current oil directory
+ < ~ >       :cd to the current oil directory { scope = "tab" }
+ < gs >      Change the sort order
+```
+and last
+```
+ _       Open oil in Neovim's current working directory
+```
+
+
+
+
 ## TODO
 
 - include various nested README.md's here as their existence is almost pointless if the user forgets to look at them
