@@ -55,6 +55,7 @@
           ./modules/whichkey/default.nix
           ./modules/lm/default.nix
           ./modules/oil/default.nix
+          ./modules/terminal/default.nix
           # TODO move this somewhere its just to not burn my eyes out for now
           { colorscheme = "torte"; }
           # V in case something breaks this makes it harder to refer to the source as

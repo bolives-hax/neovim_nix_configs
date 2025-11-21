@@ -128,8 +128,37 @@ and last
  _       Open oil in Neovim's current working directory
 ```
 
+## working with TERMINAL (term://) mode
+If you edit `:e term://bash` or `:e term://zsh` as f it was a file it opens a Terminal. When you "INSERT" into
+this terminal ( the mode shown where usually it would say INSERT)  via hitting `i` or whatever gets you into
+insert mode you will find yourself in TERMINAL mode which is similar to insert mode except that in order to
+allow you to issue some escape sequences and stuff it will pass trough most keystrokes thus hitting Esc doesn't
+work. But honestly I can't stand the keyboard gymnastics you need to exist that TERMINAL mode to go back to normal mode.
+Thus
+```
+Alt + h (exit term and go to the nvim split on the right)
+Alt + j (exit term and go to the nvim split beneath)
+Alt + k (exit term and go to the nvim split above)
+Alt + l (exit term and go to the nvim split on the right)
+```
 
+and
 
+```
+Esc
+```
+now works as expected ... as of
+```
+tnoremap <A-h> <C-\><C-N><C-w>h
+tnoremap <A-j> <C-\><C-N><C-w>j
+tnoremap <A-k> <C-\><C-N><C-w>k
+tnoremap <A-l> <C-\><C-N><C-w>l
+tnoremap <Esc> <C-\><C-N>
+```
+
+### TODO multiplexing and detachable nvim fun
+
+### TODO gifs
 
 ## TODO
 
