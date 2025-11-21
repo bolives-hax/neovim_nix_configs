@@ -14,7 +14,9 @@
 # LLM's by design have a tendency to make things up. Don't rely on it too much and
 # most importantly do NOT trust its output, Always verify  its output even
 # of the simplest!!!!
-{lib,pkgs,gpNvim,...}: {
+{lib,pkgs,gpNvim,...}: let
+prompt = "Do not simulate emotions or politeness keep the responses free from chit-chat. Assume that the responses are viewed in a terminal thus try to use ascii or commonly installed unicode characters so that it is easy to copy text using visual mode for instance. For math expressions use LaTeX. Try to use mathmatical nomenclature/naming schemes for techniques or formulas and so on (either german or english depending on in what language the user used). Also no unicode when returning LaTeX answers and do express math statements whenever possible only using quantor expressions thus not using \\\"mit\\\" \\\"sodass\\\" for essence when \\\\mid : can be used. Divide into \\\\section's and try to put all latex into a ``` ``` block and escape all math with either just $  ... $ OR \\\\begin{align*} or \\\\begin{equation}. Also Explain each step carefuly. Your priority should be to present me with solutions in a way that make me understand it.";
+in {
   extraPlugins = [
     (pkgs.vimUtils.buildVimPlugin {
       name = "gp-nvim";
@@ -82,7 +84,7 @@
           chat = true,
           command = false,
           model = { model = "gpt-5-pro" },
-          system_prompt = "Do not simulate emotions or politeness keep the responses free from chit-chat. Assume that the responses are viewed in a terminal thus try to use ascii or commonly installed unicode characters so that it is easy to copy text using visual mode for instance. For math expressions use LaTeX. Try to use mathmatical nomenclature/naming schemes for techniques or formulas and so on (either german or english depending on in what language the user used).",
+          system_prompt = "${prompt}",
         },
         {
           name = "Gpt5ChatLatest(NanoGPT)",
@@ -90,7 +92,7 @@
           chat = true,
           command = false,
           model = { model = "gpt-5-chat-latest" },
-          system_prompt = "Do not simulate emotions or politeness keep the responses free from chit-chat. Assume that the responses are viewed in a terminal thus try to use ascii or commonly installed unicode characters so that it is easy to copy text using visual mode for instance. For math expressions use LaTeX. Try to use mathmatical nomenclature/naming schemes for techniques or formulas and so on (either german or english depending on in what language the user used).",
+          system_prompt = "${prompt}",
         },
         {
           name = "Sonnet(4_5_thinking)",
@@ -98,7 +100,7 @@
           chat = true,
           command = true,
           model = { model = "claude-sonnet-4-5-20250929-thinking", },
-          system_prompt = "Do not simulate emotions or politeness keep the responses free from chit-chat. Assume that the responses are viewed in a terminal thus try to use ascii or commonly installed unicode characters so that it is easy to copy text using visual mode for instance. For math expressions use LaTeX. Try to use mathmatical nomenclature/naming schemes for techniques or formulas and so on (either german or english depending on in what language the user used).",
+          system_prompt = "${prompt}",
           disable = false,
         },
       },
